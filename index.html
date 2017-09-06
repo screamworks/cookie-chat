@@ -13,7 +13,11 @@
       </form>
       <input class="form-control text-box" type="text" ng-model="filterMessage" placeholder="filter here">
       <div class="messages-container">
-        <p ng-repeat="message in messages | filter: filterMessage">
+        <select class="input-medium" ng-model="sortDirection">
+            <option value="-createdAt">Descending</option>
+            <option value="+createdAt">Ascending</option>
+        </select>
+        <p ng-repeat="message in messages | filter: filterMessage | orderBy: sortDirection">
           {{message.message}} {{ message.createdAt | date : "short" }} </p>
       </div>
     </div>
